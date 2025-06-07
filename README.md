@@ -1,10 +1,10 @@
-Hi ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif)My name is Wai Meng
+こんいちわ ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif)My name is Wai Meng
 ================================================================================================================================
 
 Student at Ngee Ann Polytechnic
 -------------------------------
 
-I was inspired to get into coding and found out that i loved it. I started out with HTML and CSS.Gradually, I expanded my knowledge base into frameworks like React and Next.js
+I was inspired to get into coding and found out that i loved it. I started out with HTML and CSS.Gradually, I expanded my knowledge base into frameworks like React and Next.js. Currently learning Japnaese >_< 
 
 *   🌍  I'm based in Singapore
 *   ✉️  You can contact me at [leongwm06tj@gmail.com](mailto:leongwm06tj@gmail.com)
