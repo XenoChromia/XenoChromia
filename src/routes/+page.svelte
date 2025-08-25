@@ -9,6 +9,7 @@ let commands = [
     "/help",
     "/secret",
     "/blog",
+    "/credits",
     "/clear"
 ]
 type Command = keyof typeof commandOutput;
@@ -24,6 +25,7 @@ let commandOutput: Record<string, string> = {
                 <li><span class="font-mono text-green-600">/about</span> → About Me</li>
                 <li><span class="font-mono text-green-600">/skills</span> → Skills Overview</li>
                 <li><span class="font-mono text-green-600">/experience</span> → Experiences Overview</li>
+                <li><span class="font-mono text-green-600">/credits</span> → Images Credits</li>
                 <li><span class="font-mono text-green-600">/clear</span> → Clears the terminal</li>
             </ul>
         </div>
@@ -31,7 +33,7 @@ let commandOutput: Record<string, string> = {
     "/about": `
         <div class="p-4 w-full">
             <p>Hi, I’m a 19 Year old student developer passionate about <span class="font-mono text-blue-600">coding</span>, <span class="font-mono text-red-600">open source</span>, and problem solving.
-            I love learning and exploring new technologies and I love using <span class="font-mono text-orange-600">Linux</span>.</p>
+            I love learning and exploring new technologies and I love using <span class="font-mono text-orange-500">Linux</span>.</p>
         </div>
         
   `,
@@ -46,11 +48,20 @@ let commandOutput: Record<string, string> = {
         </div>
   `,
     "/experience": `
-      Projects:
-        <li>This website is my "first" actual project. Made with sveltekit</li>
-        <li>TBC...</li>
+        <div class="p-4 w-full">
+            <p>Projects:</p>
+            <ul>
+                <li>This website is my "first" actual project. Made with <span class="font-mono text-orange-600"><a href="https://svelte.dev/docs/kit/introduction" class="cursor-pointer">sveltekit</a></span></li>
+                <li>TBC...</li>
+            </ul>
+        </div>
   `, 
     "/blog":`TBC...`,
+    "/credits":`
+        <div class="p-4 flex flex-col">
+            <a href="https://www.freepik.com/free-photo/retro-computer-technology-with-monitor-hardware_34134892.htm#fromView=keyword&page=1&position=6&uuid=f7a80659-1a82-4493-84d3-47b515f26e18&query=Old+computer" class="cursor-pointer" target="_blank">Image of Computer</a>
+            <a href="https://avatars.alphacoders.com/avatars/view/131507" class="cursor-pointer" target="_blank">Image of Profile Picture</a>
+        </div>`,
     "/secret": `
         <pre class="w-full" style="font-size: 0.5rem">
             ${data.art}
@@ -123,7 +134,7 @@ function handleEnter(event: KeyboardEvent) {
 
     <!-- Right profile -->
     <div class="flex flex-col gap-12 w-full h-dvh justify-center items-center px-12">
-        <img src="pfp.png" alt="Picture of me" class="rounded-full w-1/2">
+        <img src="pfp.jpg" alt="Picture of me" class="text-white rounded-full w-52 h-52">
         <div class="flex flex-col gap-4">
             <div>
                 <h1 class="text-white text-4xl font-bold w-full">Hallo, I'm Wai Meng</h1>
@@ -149,13 +160,6 @@ input:focus {
     outline: none;
     box-shadow: none;
 }
-@import url("https://fonts.googleapis.com/css?family=Inconsolata|Roboto+Mono|Ubuntu+Mono|Cutive+Mono");
-pre{
-display: inline-block;
-font-size: 7px;
-text-align: center;
-font-family: Ubuntu Mono, monospace !important;
-text-rendering: optimizeSpeed;
-}
+
 </style>
 
