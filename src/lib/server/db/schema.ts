@@ -1,9 +1,4 @@
-import { pgTable, serial, integer, varchar, json, date } from 'drizzle-orm/pg-core';
-
-export const user = pgTable('user', {
-	id: serial('id').primaryKey(),
-	age: integer('age')
-});
+import { pgTable, serial, varchar, json, date } from 'drizzle-orm/pg-core';
 
 export const blogPost = pgTable('blogPost', {
     id: serial('id').primaryKey(),
