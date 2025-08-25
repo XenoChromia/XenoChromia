@@ -32,14 +32,15 @@ let commandOutput: Record<string, string> = {
   `,
     "/about": `
         <div class="p-4 w-full">
-            <p>Hi, I’m a 19 Year old student developer passionate about <span class="font-mono text-blue-600">coding</span>, <span class="font-mono text-red-600">open source</span>, and problem solving.
-            I love learning and exploring new technologies and I love using <span class="font-mono text-orange-500">Linux</span>.</p>
+            <p>Hi, I’m a 19 Year old student developer passionate about <span class="font-mono text-blue-600">coding</span> and <span class="font-mono text-red-600">open source</span>. 
+            I love learning and exploring new technologies and I love using <span class="font-mono text-orange-500">Linux</span> :0.</p>
+            <p>Currently, looking for networking opportunities and internships for 2026.</p>
         </div>
         
   `,
     "/skills": `
         <div class="p-4 w-full">
-            <ul>
+            <ul class="list-disc">
                 <li>Programming Languages: TypeScript/JavaScript, Python, C#, Go</li>
                 <li>Systems: Linux, Cloud(AWS)</li>
                 <li>Web Dev: React, Svelte, Vercel</li>
@@ -50,8 +51,8 @@ let commandOutput: Record<string, string> = {
     "/experience": `
         <div class="p-4 w-full">
             <p>Projects:</p>
-            <ul>
-                <li>This website is my "first" actual project. Made with <span class="font-mono text-orange-600"><a href="https://svelte.dev/docs/kit/introduction" class="cursor-pointer">sveltekit</a></span></li>
+            <ul class="list-disc">
+                <li>This <span class="font-mono text-blue-600"><a href="https://github.com/XenoChromia/XenoChromia">website</a></span> is my "first" actual project. Made with <span class="font-mono text-orange-600"><a href="https://svelte.dev/docs/kit/introduction" class="cursor-pointer">sveltekit</a></span></li>
                 <li>TBC...</li>
             </ul>
         </div>
@@ -108,7 +109,6 @@ function handleEnter(event: KeyboardEvent) {
       input = "";
     }
 }
-
 </script>
 
 <div class="w-full grid grid-cols-1 lg:grid-cols-3">
@@ -127,7 +127,7 @@ function handleEnter(event: KeyboardEvent) {
             {/each}
             <div class="flex flex-col sm:flex-row">
                 <p class="flex items-center">waimeng@debian></p>
-                <input type="text" bind:value={input} onkeydown={handleEnter} class="w-full bg-transparent text-white border-none outline-none" placeholder="Type here">
+                <input type="text" bind:value={input} onkeydown={handleEnter} class="w-full bg-transparent text-white border-none outline-none " placeholder="Type here">
             </div>
         </div>
     </div>
