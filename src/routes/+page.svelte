@@ -41,7 +41,7 @@ let commandOutput: Record<string, string> = {
     "/skills": `
         <div class="p-4 w-full">
             <ul class="list-disc">
-                <li>Programming Languages: TypeScript/JavaScript, Python, C#, Go</li>
+                <li>Programming Languages: TypeScript/JavaScript, Python, C#</li>
                 <li>Systems: Linux, Cloud(AWS)</li>
                 <li>Web Dev: React, Svelte, Vercel</li>
                 <li>Agile/Scrum</li>
@@ -120,7 +120,7 @@ function handleEnter(event: KeyboardEvent) {
         </div>
 
         <!-- Terminal -->
-        <div class="absolute top-0 left-0 mt-[30%] mx-4 w-[65%] h-[33%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
+        <div id="term" class="absolute top-0 left-0 mt-[30%] mx-4 w-[65%] h-[33%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
             {#each history as entry}
                 <div>waimeng@debian> {entry.command}</div>
                 <div>{@html entry.output}</div>
@@ -159,6 +159,16 @@ function handleEnter(event: KeyboardEvent) {
 input:focus {
     outline: none;
     box-shadow: none;
+}
+
+#term::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#term {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 </style>
