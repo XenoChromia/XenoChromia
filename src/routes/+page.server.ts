@@ -1,7 +1,8 @@
 // src/routes/+page.server.ts
-export async function load({ fetch }) {
-  const res = await fetch("/art.txt"); // served from static/
-  const art = await res.text();
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+export async function load() {
+  const art = readFileSync(join(process.cwd(), 'static', 'art.txt'), 'utf-8');
   return { art };
 }
-
