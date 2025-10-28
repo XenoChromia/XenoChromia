@@ -1,0 +1,21 @@
+stages:
+  - build
+  - run
+
+build_job:
+  stage: build
+  script:
+    - sudo systemctl stop portfolio.service
+    - echo "Building project..."
+    - bun run build
+  tags:
+    - opi3b
+
+run_job:
+  stage: run
+  script:
+    - echo "Running project..."
+    - sudo systemctl start portfolio.service
+  tags:
+    - opi3b
+
