@@ -1,0 +1,18 @@
+name: Build and Run 
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-run:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: Stop service
+        run: sudo systemctl stop portfolio.service || true
+      - name: Build project
+        run: bun run build
+      - name: Start service
+        run: sudo systemctl start portfolio.service
+
