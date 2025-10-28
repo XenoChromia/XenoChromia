@@ -12,7 +12,9 @@ jobs:
       - name: Stop service
         run: sudo systemctl stop portfolio.service || true
       - name: Build project
-        run: bun run build
+        run: |
+          bun install
+          bun run build
       - name: Start service
         run: sudo systemctl start portfolio.service
 
