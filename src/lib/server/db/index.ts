@@ -1,10 +1,6 @@
-import { drizzle } from 'drizzle-orm/postgres-js';
-import postgres from 'postgres';
-import * as schema from './schema';
-import { env } from '$env/dynamic/private';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 
-if (!env.DATABASE_URL) throw new Error('DATABASE_URL is not set');
+const db = drizzle(process.env.DATABASE_URL);
 
-const client = postgres(env.DATABASE_URL);
+const result = await db.execute('select 1');
 
-export const db = drizzle(client, { schema });

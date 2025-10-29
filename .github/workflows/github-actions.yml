@@ -13,8 +13,8 @@ jobs:
         run: sudo systemctl stop portfolio.service || true
       - name: Build project
         run: |
-          bun install
-          bun run build
+          npm install
+          npm run build
       - name: Start service
         run: sudo systemctl start portfolio.service
 
