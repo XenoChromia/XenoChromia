@@ -57,7 +57,6 @@ let commandOutput: Record<string, string> = {
             </ul>
         </div>
   `, 
-    "/blog":`TBC...`,
     "/credits":`
         <div class="p-4 flex flex-col">
             <a href="https://www.freepik.com/free-photo/retro-computer-technology-with-monitor-hardware_34134892.htm#fromView=keyword&page=1&position=6&uuid=f7a80659-1a82-4493-84d3-47b515f26e18&query=Old+computer" class="cursor-pointer" target="_blank">Image of Computer</a>
@@ -77,7 +76,9 @@ async function runCommand(cmd: string) {
         history = [...history, { command: cmd, output: commandOutput["/secret"] }];
         term.scrollTop = term.scrollHeight;
         return;
-    } else if (!(cmd in commandOutput)) {
+    } else if (cmd == "/blog") {
+        window.location.href = "/blog"
+    }else if (!(cmd in commandOutput)) {
         return;
     }
 
@@ -120,7 +121,7 @@ function handleEnter(event: KeyboardEvent) {
         </div>
 
         <!-- Terminal -->
-        <div id="term" class="absolute top-0 left-0 mt-[30%] mx-4 w-[65%] h-[33%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
+        <div id="term" class="absolute top-0 translate-y-2/3 left-0 mx-4 w-[65%] h-[33%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
             {#each history as entry}
                 <div>waimeng@debian> {entry.command}</div>
                 <div>{@html entry.output}</div>
@@ -137,7 +138,7 @@ function handleEnter(event: KeyboardEvent) {
         <img src="pfp.jpg" alt="Picture of me" class="text-white rounded-full w-52 h-52">
         <div class="flex flex-col gap-4">
             <div>
-                <h1 class="text-white text-4xl font-bold w-full">Hallo, I'm Wai Meng</h1>
+                <h1 class="text-white text-4xl font-bold w-full">Hello, I'm Wai Meng</h1>
                 <p class="text-white text-2xl"> Currently, I am a Y2 student studying Ngee Ann Polytechnic in Singapore.</p>
             </div>
             <div class="flex gap-4">
