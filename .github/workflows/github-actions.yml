@@ -15,6 +15,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Update local
+        run: git pull 
+        
       - name: Stop service
         run: sudo systemctl stop portfolio.service || true
 
