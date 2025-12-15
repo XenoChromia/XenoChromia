@@ -121,7 +121,7 @@ function handleEnter(event: KeyboardEvent) {
         </div>
 
         <!-- Terminal -->
-        <div id="term" class="absolute top-0 translate-y-2/3 left-0 mx-4 w-[65%] h-[33%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
+        <div id="term" class="absolute top-0 translate-y-2/3 left-0 mx-4 w-[65%] h-[32%] z-10 overflow-y-scroll gap-auto flex flex-col text-white" bind:this={term}>
             {#each history as entry}
                 <div>waimeng@debian> {entry.command}</div>
                 <div>{@html entry.output}</div>
