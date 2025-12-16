@@ -77,7 +77,7 @@ async function runCommand(cmd: string) {
         term.scrollTop = term.scrollHeight;
         return;
     } else if (cmd == "/blog") {
-        window.location.href = "/blog"
+        window.open("/blog", "_blank")
     }else if (!(cmd in commandOutput)) {
         return;
     }
