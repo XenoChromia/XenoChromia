@@ -6,6 +6,6 @@
 </script>
 
 {#if data.postTemplateType === 1}
-    <Template1 id={data.id} />
+    <Template1 id={Number(data.id)} />
 {/if}
 

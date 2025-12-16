@@ -1,4 +1,5 @@
 import type { PageServerLoad } from './$types';
+import postsData from '$lib/server/db/posts.json';
 
 type Timage = {
     imageId: string;
@@ -14,37 +15,15 @@ type Tposts = {
     contentParagraphs: string[];
     images?: Timage[];
 };
-let posts: Tposts[] = [
-    {
-        id: 1,
-        template: 2,
-        title: 'Test',
-        description: 'This is a test post',
-        contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2']
-    },
-    {
-        id: 2,
-        template: 1,
-        title: 'Test2',
-        description: 'This is a test post2',
-        contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2'],
-        images: [
-            {
-                imageId: 'img1',
-                imageDescription: 'description',
-                imageAlt: 'this is image alt',
-                imageLink: 'https://picsum.photos/200'
-            }
-        ]
-    }
-];
-
+let posts: Tposts[] = []
 
 export const load: PageServerLoad = async ({ params }) => {
     const { id } = params;
+    const postId = Number(id);
+    const posts: Tposts[] = postsData.posts[0];
 
-    let postTemplateType: number = posts[1].template
-
+    let postTemplateType: number = posts.template
+    
     return {
         id,
         postTemplateType

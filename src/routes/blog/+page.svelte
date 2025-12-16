@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
 	type Timage = {
 		imageId: string;
 		imageDescription: string;
@@ -13,31 +15,11 @@
 		contentParagraphs: string[];
 		images?: Timage[];
 	};
-	let posts: Tposts[] = [
-		{
-			id: 1,
-			template: 2,
-			title: 'Test',
-			description: 'This is a test post',
-			contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2']
-		},
-		{
-			id: 2,
-			template: 3,
-			title: 'Test2',
-			description: 'This is a test post2',
-			contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2'],
-			images: [
-				{
-					imageId: 'img1',
-					imageDescription: 'description',
-					imageAlt: 'this is image alt',
-					imageLink: 'https://picsum.photos/200'
-				}
-			]
-		}
-	];
-	console.log(posts);
+	let posts: Tposts[] = []
+    onMount(async () => {
+		const res = await fetch('/api/db/getPosts');
+		posts = await res.json();
+	});
 </script>
 
 <div class="flex h-full flex-col gap-12">

@@ -1,31 +1,76 @@
 <script lang="ts">
-	export let id: string;
+	import { onMount } from 'svelte';
+
+	export let id: number;
+
+	type Timage = {
+		imageId: string;
+		imageDescription: string;
+		imageAlt: string;
+		imageLink: string;
+	};
+
+	type Tposts = {
+		id: number;
+		template: number;
+		title: string;
+		description: string;
+		contentParagraphs: string[];
+		images?: Timage[];
+	};
+
+	let post: Tposts | null = null;
+	let error: string | null = null;
+
+	onMount(async () => {
+		try {
+			const res = await fetch(`/api/db/getPosts`);
+			if (!res.ok) throw new Error('Failed to fetch posts');
+			const data = await res.json(); // assuming { posts: [...] }
+			const postId = Number(id) - 1;
+			console.log(data);
+			post = data[postId];
+
+			if (!post) {
+				error = `Post with id ${id} not found`;
+			}
+		} catch (e: any) {
+			error = e.message;
+		}
+	});
 </script>
 
-<div class="container text-white">
-	<a href="/blog">← Back</a>
+{#if error}
+	<p class="text-red-500">{error}</p>
+{:else if !post}
+	<p>Loading...</p>
+{:else}
+	<div class="container text-white">
+		<a href="/blog">← Back</a>
 
-	<h1>Blog Post Title</h1>
-	<div class="date">December 16, 2025</div>
-	<p>Template 1 – ID: {id}</p>
+		<h1>{post.title}</h1>
+		<div class="date">December 16, 2025</div>
+		{#if post.images}
+			<div class="w-full flex justify-center">
+				<img src={post.images[0].imageLink} alt={post.images[0].imageAlt} width="500" />
+			</div>
+			<p>{post.images[0].imageDescription}</p>
+		{/if}
 
-	<p>
-		This is the first paragraph of the blog post. Lorem ipsum dolor sit amet, consectetur adipiscing
-		elit.
-	</p>
+		<p>{post.description}</p>
 
-	<p>
-		This is another paragraph with more content. Sed do eiusmod tempor incididunt ut labore et
-		dolore magna aliqua.
-	</p>
+		{#each post.contentParagraphs as para}
+			<p>{para}</p>
+		{/each}
 
-	<p>You can add as many paragraphs as needed for your blog post content.</p>
-
-	<p>
-		Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat.
-	</p>
-</div>
+		{#if post.images}
+			{#each post.images as img}
+				<img src={img.imageLink} alt={img.imageAlt} />
+				<p>{img.imageDescription}</p>
+			{/each}
+		{/if}
+	</div>
+{/if}
 
 <style>
 	* {
