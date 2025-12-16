@@ -7,6 +7,7 @@
 	};
 	type Tposts = {
 		id: number;
+		template: number;
 		title: string;
 		description: string;
 		contentParagraphs: string[];
@@ -15,12 +16,14 @@
 	let posts: Tposts[] = [
 		{
 			id: 1,
+			template: 2,
 			title: 'Test',
 			description: 'This is a test post',
 			contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2']
 		},
 		{
 			id: 2,
+			template: 3,
 			title: 'Test2',
 			description: 'This is a test post2',
 			contentParagraphs: ['Hello this is a test paragraph1', 'Hello this is a test paragraph2'],
@@ -29,7 +32,7 @@
 					imageId: 'img1',
 					imageDescription: 'description',
 					imageAlt: 'this is image alt',
-					imageLink: 'https://picsum.photos/200/300'
+					imageLink: 'https://picsum.photos/200'
 				}
 			]
 		}
@@ -37,24 +40,40 @@
 	console.log(posts);
 </script>
 
-<div class="h-full">
+<div class="flex h-full flex-col gap-12">
 	<div
 		id="header"
-		class="h-12 w-full items-center justify-center border border-solid border-indigo-600"
+		class="flex h-12 w-full items-center justify-center border border-double border-indigo-500"
 	>
-		<h1 class="inline-flex text-white">hello world</h1>
+		<h1 class="text-4xl font-bold text-white">Wai Meng's Blog Site</h1>
 	</div>
-	<div id="posts" class="h-full w-full">
-		<h1 class="text-white">Blog Posts</h1>
-	</div>
-	{#each posts as post}
-		<div class="text-white bg-gray-600">
-			<h1>{post.title}</h1>
-			<h2>{post.description}</h2>
-			<p>{post.contentParagraphs}</p>
-			{#if post.images}
-				<img src={post.images[0].imageLink} alt={post.images[0].imageAlt || 'unknown'} />
-			{/if}
+	<div class="flex h-full flex-col gap-8 px-12">
+		<div id="posts" class="h-full w-full">
+			<h1 class="text-4xl font-semibold text-white">Blog Posts</h1>
 		</div>
-	{/each}
+		<div class="grid grid-cols-1 gap-4 p-8 sm:grid-cols-2 md:grid-cols-3 items-center h-full">
+			{#each posts as post}
+				<a href="/{post.id}" class="flex w-full h-full justify-center cursor-pointer">
+					<div class="flex flex-col items-start justify-end rounded-md bg-gray-600 p-4 text-white">
+						{#if post.images}
+							<div class="flex h-full w-full items-center justify-center">
+								<img src={post.images[0].imageLink} alt={post.images[0].imageAlt || 'unknown'} />
+							</div>
+						{:else}
+							<div
+								class="flex h-full min-h-[200px] w-full items-center justify-center rounded-md border border-2 border-black"
+							>
+								<h1 class="text-4xl font-bold">NO IMAGE</h1>
+							</div>
+						{/if}
+						<div class="flex flex-col gap-1">
+							<h1 class="text-xl font-bold">{post.title}</h1>
+							<h2 class="text-md">{post.description}</h2>
+							<p class="text-sm">{post.contentParagraphs}</p>
+						</div>
+					</div>
+				</a>
+			{/each}
+		</div>
+	</div>
 </div>
