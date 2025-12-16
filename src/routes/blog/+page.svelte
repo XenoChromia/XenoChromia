@@ -53,7 +53,7 @@
 		</div>
 		<div class="grid grid-cols-1 gap-4 p-8 sm:grid-cols-2 md:grid-cols-3 items-center h-full">
 			{#each posts as post}
-				<a href="/{post.id}" class="flex w-full h-full justify-center cursor-pointer">
+				<a href="/blog/{post.id}" class="flex w-full h-full justify-center cursor-pointer">
 					<div class="flex flex-col items-start justify-end rounded-md bg-gray-600 p-4 text-white">
 						{#if post.images}
 							<div class="flex h-full w-full items-center justify-center">
