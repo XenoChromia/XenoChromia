@@ -14,22 +14,24 @@
 		id: number;
 		template: number;
 		title: string;
+        date: string;
 		description: string;
 		contentParagraphs: string[];
 		images?: Timage[];
 	};
 
-	let post: Tposts | null = null;
+	let posts: Tposts[] | null = null;
 	let error: string | null = null;
+    let post: Tposts;
 
 	onMount(async () => {
 		try {
 			const res = await fetch(`/api/db/getPosts`);
 			if (!res.ok) throw new Error('Failed to fetch posts');
 			const data = await res.json(); // assuming { posts: [...] }
-			const postId = Number(id) - 1;
-			console.log(data);
-			post = data[postId];
+			const postId = Number(id);
+
+            post = data.find(p => p.id === postId);
 
 			if (!post) {
 				error = `Post with id ${id} not found`;
@@ -45,22 +47,22 @@
 {:else if !post}
 	<p>Loading...</p>
 {:else}
-	<div class="container text-white">
+	<div class="container text-white min-h-screen">
 		<a href="/blog">← Back</a>
 
 		<h1>{post.title}</h1>
-		<div class="date">December 16, 2025</div>
+		<div class="date">{post.date}</div>
 		{#if post.images}
-			<div class="w-full flex justify-center">
+			<div class="flex w-full justify-center">
 				<img src={post.images[0].imageLink} alt={post.images[0].imageAlt} width="500" />
 			</div>
-			<p>{post.images[0].imageDescription}</p>
+			<p class="text-[#888]">{post.images[0].imageDescription}</p>
 		{/if}
 
-		<p>{post.description}</p>
+		<h2 class="text-md">{post.description}</h2>
 
 		{#each post.contentParagraphs as para}
-			<p>{para}</p>
+			<p class="text-sm">{para}</p>
 		{/each}
 
 		{#if post.images}

@@ -1,0 +1,75 @@
+{
+    "posts": [
+        {
+            "id": 2,
+            "template": 1,
+            "title": "Second Post",
+            "date": "16 November 2025",
+            "description": "Another default post for testing",
+            "contentParagraphs": [
+                "Here is another example of a post.",
+                "You can add as many paragraphs as you like."
+            ],
+            "images": [
+                {
+                    "imageId": "img1",
+                    "imageDescription": "A sample image",
+                    "imageAlt": "Sample image alt text",
+                    "imageLink": "https://picsum.photos/200"
+                },
+                {
+                    "imageId": "img1",
+                    "imageDescription": "A sample image",
+                    "imageAlt": "Sample image alt text",
+                    "imageLink": "https://picsum.photos/200"
+                }
+
+            ]
+        },
+        {
+            "id": 3,
+            "template": 2,
+            "title": "Third Post with Template 2",
+            "date": "16 November 2025",
+            "description": "A post that uses template 2",
+            "contentParagraphs": [
+                "Template 2 could have a different layout.",
+                "You can test dynamic template rendering with this post."
+            ],
+            "images": [
+                {
+                    "imageId": "img1",
+                    "imageDescription": "A sample image",
+                    "imageAlt": "Sample image alt text",
+                    "imageLink": "https://picsum.photos/200"
+                },
+                {
+                    "imageId": "img2",
+                    "imageDescription": "A sample image",
+                    "imageAlt": "Sample image alt text",
+                    "imageLink": "https://picsum.photos/200"
+                },
+                {
+                    "imageId": "img3",
+                    "imageDescription": "A sample image",
+                    "imageAlt": "Sample image alt text",
+                    "imageLink": "https://picsum.photos/200"
+                }
+
+
+            ]
+        }, 
+        {
+            "id": 1,
+            "template": 1,
+            "title": "Welcome Post",
+            "date": "16 November 2025",
+            "description": "This is the first default post",
+            "contentParagraphs": [
+                "Welcome to our blog!",
+                "This is a sample paragraph to demonstrate the post structure."
+            ]
+        }
+    ]
+}
+
