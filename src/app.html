@@ -3,10 +3,43 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Wai Meng</title>
+
+		<!--
+			Static metadata. The <title> lives in +layout.svelte instead: a
+			static tag here sits outside SvelteKit's head-merge, so it was
+			emitted alongside each page's own <title> and duplicated it.
+			These are the values a crawler or link preview falls back to.
+		-->
+		<meta
+			name="description"
+			content="Information Technology student at Ngee Ann Polytechnic, Singapore. AWS, Oracle Generative AI and Google Project Management certified. Open to internships for 2026."
+		/>
+		<meta name="color-scheme" content="dark" />
+		<meta name="theme-color" content="#0a0d0c" />
+
+		<!-- Open Graph / social preview -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="XenoChromia" />
+		<meta property="og:title" content="Wai Meng Leong — Information Technology student" />
+		<meta
+			property="og:description"
+			content="Information Technology student at Ngee Ann Polytechnic, Singapore. AWS, Oracle Generative AI and Google Project Management certified."
+		/>
+		<meta property="og:image" content="/static.png" />
+		<meta property="og:image:width" content="800" />
+		<meta property="og:image:height" content="603" />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Wai Meng Leong — Information Technology student" />
+		<meta
+			name="twitter:description"
+			content="Information Technology student at Ngee Ann Polytechnic, Singapore."
+		/>
+		<meta name="twitter:image" content="/static.png" />
+
 		%sveltekit.head%
 	</head>
-	<body data-sveltekit-preload-data="hover" class="bg-black">
+	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

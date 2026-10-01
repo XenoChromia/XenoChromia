@@ -1,4 +1,4 @@
-import { db } from './index.ts';
+import { db } from './index';
 import { posts, images } from './schema';
 import { eq } from 'drizzle-orm';
 
